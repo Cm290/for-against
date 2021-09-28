@@ -51,27 +51,9 @@ module.exports = {
     new HandlebarsPlugin({
       entry: path.join(process.cwd(), "src", "*.hbs"),
       output: path.join(process.cwd(), "dist", "[name].html"),
-
-      // data: require("./app/data/project.json"),
-      // data: path.join(__dirname, "app/data/project.json"),
       partials: [
         path.join(process.cwd(), "src", "components", "*", "*.hbs")
       ],
- 
-      // helpers: {
-      //   nameOfHbsHelper: Function.prototype,
-      //   projectHelpers: path.join(__dirname, "helpers", "*.helper.js")
-      // },
- 
-      // hooks
-      // getTargetFilepath: function (filepath, outputTemplate) {},
-      // getPartialId: function (filePath) {}
-      // onBeforeSetup: function (Handlebars) {},
-      // onBeforeAddPartials: function (Handlebars, partialsMap) {},
-      // onBeforeCompile: function (Handlebars, templateContent) {},
-      // onBeforeRender: function (Handlebars, data, filename) {},
-      // onBeforeSave: function (Handlebars, resultHtml, filename) {},
-      // onDone: function (Handlebars, filename) {}
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "src", "index.hbs")
