@@ -1,10 +1,19 @@
 .contributor {
     border: 0.1rem solid $border-color;
     border-top: none;
-    padding: 2rem;
+    padding: 0.5rem;
+
+    @media (min-width: $mobile-breakpoint) {
+        padding: 2rem;
+    }
 
     &.hide {
         display: none;
+    }
+
+    img {
+        width: 10rem;
+        margin: auto;
     }
 
     &__overview {
@@ -17,6 +26,9 @@
     }
 
     &__summary {
+        @media (min-width: $mobile-breakpoint) {
+            margin-left: 2rem;
+        }
         h2 {
             font-size: 1.2rem;
         }
