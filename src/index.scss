@@ -1,6 +1,7 @@
 $background-color: #FEF9F5;
 $text-colour: #121212;
 $border-color: #dcdcdc;
+$highlight: #c74600;
 $mobile-breakpoint: 700px;
 
 @font-face {
@@ -27,3 +28,19 @@ body {
     }
 }
 
+.off-screen {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+    padding: 0;
+    border: 0;
+    height: 1px;
+    width: 1px;
+    margin-bottom: -1px;
+    margin-right: -1px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.no-js {
+    display: none;
+}
