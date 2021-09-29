@@ -1,0 +1,17 @@
+
+
+.tabHeader {
+    display: flex;
+
+    &__button {
+        width: 50%;
+        border: 0.1rem solid $border-color;
+        background-color: $border-color;
+        padding: 0.5rem;
+        
+        &.clicked {
+            background-color: $background-color;
+            border-bottom: none;
+        }
+    }
+}

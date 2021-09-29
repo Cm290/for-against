@@ -1,9 +1,4 @@
 import "./index.scss";
+import tabHeader from './components/tabHeader/tabHeader';
 
-function component() {
-  const element = document.createElement("div");
-  element.innerHTML = 'hi';
-  return element;
-}
-
-document.body.appendChild(component());
+new tabHeader();

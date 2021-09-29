@@ -1,6 +1,9 @@
 const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HandlebarsPlugin = require("handlebars-webpack-plugin");
+const { lstatSync, readdirSync } = require('fs');
+const source = path.resolve(__dirname, 'src/components');
+const isDirectory = source => lstatSync(source).isDirectory();
+const dirs = readdirSync(source).map(name => path.join(source, name)).filter(isDirectory);
 
 module.exports = {
   entry: "./src/index.js",
@@ -24,11 +27,8 @@ module.exports = {
           presets: ['@babel/preset-env']
         }
       }
-    }]
-  },
-  devtool: "source-map", // any "source-map"-like devtool is possible
-  module: {
-    rules: [{
+    },
+    {
       test: /\.s[ac]ss$/i,
       use: [
         "style-loader",
@@ -45,17 +45,25 @@ module.exports = {
           },
         },
       ],
-    }],
+    },
+    {
+      test: /\.hbs$/,
+      use: [{
+          loader: 'handlebars-loader',
+          options: {
+              partialDirs: [path.resolve(__dirname, 'src/'), ...dirs],
+              helperDirs: path.join(__dirname, 'bin/helpers'),
+          }
+      }]
+    },
+  ]
   },
   plugins: [
-    new HandlebarsPlugin({
-      entry: path.join(process.cwd(), "src", "*.hbs"),
-      output: path.join(process.cwd(), "dist", "[name].html"),
-      partials: [
-        path.join(process.cwd(), "src", "components", "*", "*.hbs")
-      ],
-    }),
     new HtmlWebpackPlugin({
+      meta: {
+        'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no',
+        'charset':"utf-8"
+      },
       template: path.resolve(__dirname, "src", "index.hbs")
      }),
   ]

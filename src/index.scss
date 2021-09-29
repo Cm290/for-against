@@ -1,5 +1,25 @@
-$body-color: red;
+$background-color: #FEF9F5;
+$text-colour: #121212;
+$border-color: #dcdcdc;
+$mobile-breakpoint: 700px;
+
+@font-face {
+    font-family: 'guardianFont';
+    src:  url('https://assets.guim.co.uk/static/frontend/fonts/guardian-textegyptian/noalts-not-hinted/GuardianTextEgyptian-Regular.woff2') format('woff2');
+}
+
+@import './components/contributor/contributor.scss';
+@import './components/tabHeader/tabHeader.scss';
 
 body {
-    color: $body-color;
+    background-color: $background-color;
+    color: $text-colour;
+    max-width: 880px;
+    margin: auto;
+    font-family: 'guardianFont', Fallback, sans-serif;
 }
+
+.article__container {
+    margin: 2rem;
+}
+

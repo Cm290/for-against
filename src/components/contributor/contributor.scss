@@ -1,0 +1,41 @@
+.contributor {
+    border: 0.1rem solid $border-color;
+    border-top: none;
+    padding: 2rem;
+
+    &.hide {
+        display: none;
+    }
+
+    &__overview {
+        display: flex;
+        flex-direction: column;
+    
+        @media (min-width: $mobile-breakpoint) {
+            flex-direction: row;
+        }
+    }
+
+    &__summary {
+        h2 {
+            font-size: 1.2rem;
+        }
+
+        h3 {
+            font-size: 1rem;
+        }
+    }
+
+    &__bio {
+        h3 {
+            font-size: 0.8rem;
+            font-weight: 300;
+        }
+    }
+
+    &__opinion {
+        p {
+            font-size: 0.825rem;
+        }
+    }
+}
