@@ -11,7 +11,26 @@
         
         &.clicked {
             background-color: $background-color;
-            border-bottom: none;
+        }
+    }
+
+    &--header {
+        .tabHeader__button {
+            border: 0.1rem solid $border-color;
+
+            &.clicked {
+                border-bottom: none;
+            }
+        }
+    }
+
+    &--footer {
+        .tabHeader__button {
+            border: 0.1rem solid $border-color;
+
+            &.clicked {
+                border-top: none;
+            }
         }
     }
 }

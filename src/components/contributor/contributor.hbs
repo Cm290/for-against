@@ -1,6 +1,6 @@
-<div class='contributor contributors--{{argument}}'>
+<div class='contributor contributor--{{argument}}'>
     <div class='contributor__overview'>
-        <img src={{image-src}} />
+        <img src={{image-src}} alt='Photograph of {{name}}' />
         <div class='contributor__summary'>
             <span class='opinion-topline'>
                 <h2>{{name}}: {{opinionSummary}}</h2>
@@ -11,6 +11,6 @@
         </div>
     </div>
     <div class='contributor__opinion'>
-        {{>opinionPiece opinion=opinion}}
+        {{{opinion}}}
     </div>
 </div>

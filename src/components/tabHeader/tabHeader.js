@@ -1,25 +1,40 @@
 class tabHeader {
     constructor() {
-        this.tabHeaderFor = document.querySelector('.tabHeader__button--for');
-        this.tabHeaderAgainst = document.querySelector('.tabHeader__button--against');
-        this.contributorFor = document.querySelector('.contributors--for');
-        this.contributorAgainst = document.querySelector('.contributors--against');
+        this.forTabHeaders = document.querySelectorAll('.tabHeader__button--for');
+        this.tabHeaders = document.querySelectorAll('.tabHeader__button');
 
-        this.tabHeaderFor.classList.add('clicked');
+        this.contributorAgainst = document.querySelector('.contributor--against');
+        this.contributors = document.querySelectorAll('.contributor');
+
+        this.setUpInitialState()
+
+        this.tabHeaders.forEach((tabHeader) => tabHeader.addEventListener('click', (e) => this.tabHeaderClicked(e)))
+    }
+
+    setUpInitialState() {
+        this.forTabHeaders.forEach((forHeader) => forHeader.classList.add('clicked'));
         this.contributorAgainst.classList.add('hide');
-
-        this.tabHeaderFor.addEventListener('click', () => {
-            this.tabHeaderFor.classList.add('clicked');
-            this.tabHeaderAgainst.classList.remove('clicked');
-            this.contributorFor.classList.remove('hide');
-            this.contributorAgainst.classList.add('hide');
+        document.querySelector(`.tabHeader__button--for.tabHeader__button--header`).querySelector('.off-screen').innerHTML = ' argument. Button active, text has been loaded below';
+        document.querySelector(`.tabHeader__button--for.tabHeader__button--footer`).querySelector('.off-screen').innerHTML = ' argument. Button active, text has been loaded above';
+        document.querySelectorAll(`.tabHeader__button--against`).forEach((inactiveButton) => {
+            inactiveButton.querySelector('.off-screen').innerHTML = ' argument. Button inactive';
         });
+    }
 
-        this.tabHeaderAgainst.addEventListener('click', () => {
-            this.tabHeaderFor.classList.remove('clicked');
-            this.tabHeaderAgainst.classList.add('clicked');
-            this.contributorFor.classList.add('hide');
-            this.contributorAgainst.classList.remove('hide');
+    tabHeaderClicked(e) {
+        this.tabHeaders.forEach((tabHeader) => tabHeader.classList.toggle('clicked'));
+        this.contributors.forEach((contributor) => contributor.classList.toggle('hide'));
+
+        this.altText(e.target.classList.contains('tabHeader__button--for'));
+    }
+
+    altText(forArgument) {
+        const argument = forArgument ? 'for' : 'against';
+        const oppArgument = !forArgument ? 'for' : 'against';
+        document.querySelector(`.tabHeader__button--${argument}.tabHeader__button--header`).querySelector('.off-screen').innerHTML = ' argument. Button active, text has been loaded below';
+        document.querySelector(`.tabHeader__button--${argument}.tabHeader__button--footer`).querySelector('.off-screen').innerHTML = ' argument. Button active, text has been loaded above';
+        document.querySelectorAll(`.tabHeader__button--${oppArgument}`).forEach((inactiveButton) => {
+            inactiveButton.querySelector('.off-screen').innerHTML = ' argument. Button inactive';
         });
     }
 }
