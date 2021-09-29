@@ -20,6 +20,10 @@ body {
 }
 
 .article__container {
-    margin: 2rem;
+    padding: 0.5rem;
+
+    @media (min-width: $mobile-breakpoint) {
+        padding: 2rem;
+    }
 }
 
