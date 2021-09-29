@@ -1,2 +1,16 @@
-<h2>Some other person: this is my opionon</h2>
-<h3>This other person is</h3>
+<div class='contributor contributors--{{argument}}'>
+    <div class='contributor__overview'>
+        <img src={{image-src}} />
+        <div class='contributor__summary'>
+            <span class='opinion-topline'>
+                <h2>{{name}}: {{opinionSummary}}</h2>
+            </span>
+            <span class='contributor__bio'>
+                <h3>{{bio}}</h3>
+            </span>
+        </div>
+    </div>
+    <div class='contributor__opinion'>
+        {{>opinionPiece opinion=opinion}}
+    </div>
+</div>
